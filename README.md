@@ -16,6 +16,7 @@ LinkSnip is a production-grade URL shortening service that allows users to creat
 - **Responsive Design**: Polished, mobile-first UI built with Tailwind CSS.
 - **Database Seeding**: Easily populate your local environment with sample data for testing.
 
+Demo video Link: https://youtu.be/kOmrMKcjLG8
 
 ## 🛠️ Tech Stack
 | Frontend | Backend | Database | Auth | Other |
