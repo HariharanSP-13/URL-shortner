@@ -35,13 +35,22 @@ app.use(express.urlencoded({ extended: true }));
 // Trust proxy — required for accurate req.ip when behind reverse proxy
 app.set('trust proxy', 1);
 
+const mongoose = require('mongoose');
+
 // ── Health Check ─────────────────────────────────────────────────────────────
 app.get('/api/health', (req, res) => {
+  const dbStates = ['disconnected', 'connected', 'connecting', 'disconnecting'];
+  const dbStatus = dbStates[mongoose.connection.readyState] || 'unknown';
+
   res.status(200).json({
     success: true,
     message: 'URL Shortener API is running 🚀',
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV || 'development',
+    database: {
+      connected: mongoose.connection.readyState === 1,
+      status: dbStatus,
+    },
   });
 });
 
