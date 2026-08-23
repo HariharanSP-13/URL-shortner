@@ -65,7 +65,7 @@ This project was developed through a structured AI-assisted workflow:
    # Create .env based on .env.example (ensure VITE_API_URL=http://localhost:5000)
    npm run dev # Starts frontend on http://localhost:5173
    ```
-4. **Access the App**: Open http://localhost:5173 in your browser.
+4. **Access the App**: Open https://url-shortner-umber-one.vercel.app in your browser.
 
 ## 🔑 Environment Variables
 | Variable | Description |
