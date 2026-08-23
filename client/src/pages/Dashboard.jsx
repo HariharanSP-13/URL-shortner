@@ -58,7 +58,11 @@ const Dashboard = () => {
 
     setSubmitLoading(true);
     try {
-      const newUrl = await urlApi.createUrl(formData);
+      const payload = { ...formData };
+      if (!payload.customAlias.trim()) delete payload.customAlias;
+      if (!payload.expiresAt) delete payload.expiresAt;
+
+      const newUrl = await urlApi.createUrl(payload);
       setUrls([newUrl, ...urls]);
       setFormData({ originalUrl: '', customAlias: '', expiresAt: '' });
       toast.success('Short URL created!');

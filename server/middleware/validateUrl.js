@@ -78,7 +78,7 @@ const validateCreateUrl = [
     }),
 
   body('customAlias')
-    .optional({ nullable: true, checkFalsy: true })
+    .optional({ values: 'falsy' })
     .trim()
     .isLength({ min: 3, max: 30 })
     .withMessage('Custom alias must be 3–30 characters')
@@ -86,7 +86,7 @@ const validateCreateUrl = [
     .withMessage('Custom alias can only contain letters, numbers, and hyphens'),
 
   body('expiresAt')
-    .optional({ nullable: true, checkFalsy: true })
+    .optional({ values: 'falsy' })
     .isISO8601().withMessage('Expiry date must be a valid ISO 8601 date')
     .custom((value) => {
       if (new Date(value) <= new Date()) {
@@ -100,7 +100,7 @@ const validateCreateUrl = [
 
 const validateUpdateUrl = [
   body('originalUrl')
-    .optional({ nullable: true, checkFalsy: true })
+    .optional({ values: 'falsy' })
     .trim()
     .custom((value) => {
       if (!isValidUrl(value)) {
@@ -110,7 +110,7 @@ const validateUpdateUrl = [
     }),
 
   body('customAlias')
-    .optional({ nullable: true, checkFalsy: true })
+    .optional({ values: 'falsy' })
     .trim()
     .isLength({ min: 3, max: 30 })
     .withMessage('Custom alias must be 3–30 characters')
@@ -118,7 +118,7 @@ const validateUpdateUrl = [
     .withMessage('Custom alias can only contain letters, numbers, and hyphens'),
 
   body('expiresAt')
-    .optional({ nullable: true, checkFalsy: true })
+    .optional({ values: 'falsy' })
     .isISO8601().withMessage('Expiry date must be a valid ISO 8601 date'),
 
   handleValidationErrors,
